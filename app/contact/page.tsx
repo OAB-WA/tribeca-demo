@@ -5,7 +5,6 @@ import Loader from '@/components/Loader'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
-import Script from 'next/script'
 
 interface ContactForm {
   name: string

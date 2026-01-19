@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   description: 'Transparent pricing for plumbing and HVAC services in Dallas. Upfront quotes, no hidden fees.',
 }
 
+// Performance Optimization: Enable static generation for faster page loads
+export const dynamic = 'force-static'
+
 export default function Price() {
   return (
     <>

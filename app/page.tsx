@@ -3,7 +3,6 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
 import QuoteForm from '@/components/QuoteForm'
-import Script from 'next/script'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -11,6 +10,10 @@ export const metadata: Metadata = {
   title: 'Tribeca Plumbing, Inc. - Dallas Plumbing & HVAC Experts',
   description: 'Licensed plumbing, HVAC, and electrical services in Dallas/Ft. Worth. 24/7 emergency service. Call (214) 402-5454',
 }
+
+// Performance Optimization: Enable static generation for faster page loads and better SEO
+// This page has no dynamic data, so it can be pre-rendered at build time
+export const dynamic = 'force-static'
 
 export default function Home() {
   return (
@@ -26,7 +29,16 @@ export default function Home() {
               <div className="owl-item cloned" style={{ width: '1920px', marginRight: '30px' }}>
                 <div className="item">
                   <div className="card border-0 wow fadeIn" style={{ visibility: 'visible' }}>
-                    <Image src="/img/slider-01.jpg" alt="" width={1920} height={800} className="card-img slider-img rounded-0 object-fit-cover" />
+                    {/* Performance Optimization: Priority loading for above-fold hero image to improve LCP */}
+                    <Image 
+                      src="/img/slider-01.jpg" 
+                      alt="" 
+                      width={1920} 
+                      height={800} 
+                      priority
+                      sizes="100vw"
+                      className="card-img slider-img rounded-0 object-fit-cover" 
+                    />
                     <div className="card-img-overlay">
                       <div className="img-inner wow fadeInUpBig" style={{ visibility: 'visible' }}>
                         <div className="text">
@@ -46,7 +58,15 @@ export default function Home() {
               <div className="owl-item cloned" style={{ width: '1920px', marginRight: '30px' }}>
                 <div className="item">
                   <div className="card border-0 wow fadeIn" style={{ visibility: 'visible' }}>
-                    <Image src="/img/slider-02.jpg" alt="" width={1920} height={800} className="card-img rounded-0 slider-img object-fit-cover" />
+                    {/* Performance Optimization: Lazy load second slider image (below fold) */}
+                    <Image 
+                      src="/img/slider-02.jpg" 
+                      alt="" 
+                      width={1920} 
+                      height={800} 
+                      sizes="100vw"
+                      className="card-img rounded-0 slider-img object-fit-cover" 
+                    />
                     <div className="card-img-overlay">
                       <div className="img-inner wow fadeInUpBig" style={{ visibility: 'visible' }}>
                         <div className="text">
@@ -117,7 +137,8 @@ export default function Home() {
                 <div className="sec">
                   <div className="img">
                     <div className="inner-img">
-                      <Image src="/img/ser-01.jpg" alt="" width={400} height={300} />
+                      {/* Performance Optimization: Lazy load service images with proper sizes for responsive loading */}
+                      <Image src="/img/ser-01.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                   </div>
                   <div className="text-center">
@@ -132,7 +153,8 @@ export default function Home() {
                 <div className="sec">
                   <div className="img">
                     <div className="inner-img">
-                      <Image src="/img/ser-05.jpg" alt="" width={400} height={300} />
+                      {/* Performance Optimization: Lazy load service images with proper sizes for responsive loading */}
+                      <Image src="/img/ser-05.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                   </div>
                   <div className="text-center">
@@ -147,7 +169,8 @@ export default function Home() {
                 <div className="sec">
                   <div className="img">
                     <div className="inner-img">
-                      <Image src="/img/ser-04.jpg" alt="" width={400} height={300} />
+                      {/* Performance Optimization: Lazy load service images with proper sizes for responsive loading */}
+                      <Image src="/img/ser-04.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                   </div>
                   <div className="text-center">
@@ -167,7 +190,8 @@ export default function Home() {
           <div className="row">
             <div className="col-6 wow fadeInLeft">
               <div className="img">
-                <Image src="/img/about.png" alt="" width={600} height={600} />
+                {/* Performance Optimization: Lazy load about image (below fold) */}
+                <Image src="/img/about.png" alt="" width={600} height={600} sizes="(max-width: 992px) 100vw, 50vw" />
               </div>
             </div>
             <div className="col-6 ps-6 fadeInRight">
@@ -210,6 +234,7 @@ export default function Home() {
           <div className="row">
             <div className="col-3 border-end border-blue">
               <div className="img">
+                {/* Performance Optimization: SVG icons are already optimized, but using next/image for consistency */}
                 <Image src="/img/ser-icon-01.svg" alt="" width={80} height={80} />
               </div>
               <h4 className="text-white">Water Heaters <br /> &amp; Repair</h4>
@@ -217,6 +242,7 @@ export default function Home() {
             </div>
             <div className="col-3 border-end border-blue border-res2">
               <div className="img">
+                {/* Performance Optimization: SVG icons are already optimized */}
                 <Image src="/img/ser-icon-02.svg" alt="" width={80} height={80} />
               </div>
               <h4 className="text-white">Drain Cleaning <br /> &amp; Sewer</h4>
@@ -224,6 +250,7 @@ export default function Home() {
             </div>
             <div className="col-3 border-end border-blue border-res">
               <div className="img">
+                {/* Performance Optimization: SVG icons are already optimized */}
                 <Image src="/img/ser-icon-03.svg" alt="" width={80} height={80} />
               </div>
               <h4 className="text-white">AC Repair <br /> &amp; Installation</h4>
@@ -231,6 +258,7 @@ export default function Home() {
             </div>
             <div className="col-3 border-res">
               <div className="img">
+                {/* Performance Optimization: SVG icons are already optimized */}
                 <Image src="/img/ser-icon-04.svg" alt="" width={80} height={80} />
               </div>
               <h4 className="text-white">Commercial <br /> Plumbing</h4>
@@ -253,6 +281,7 @@ export default function Home() {
                 <div className="item wow fadeIn">
                   <div className="box border">
                     <div className="img">
+                      {/* Performance Optimization: Lazy load testimonial quote icons */}
                       <Image src="/img/quote.png" alt="" width={60} height={60} className="object-fit-cover" />
                     </div>
                     <p className="text-capitalize">Tribeca Plumbing came out same day for our emergency plumbing issue. Professional, honest, and got the job done right. Highly recommend!</p>
@@ -263,6 +292,7 @@ export default function Home() {
                 <div className="item wow fadeIn">
                   <div className="box border">
                     <div className="img">
+                      {/* Performance Optimization: Lazy load testimonial quote icons */}
                       <Image src="/img/quote.png" alt="" width={60} height={60} className="object-fit-cover" />
                     </div>
                     <p className="text-capitalize">Great service for our HVAC installation. The technicians were knowledgeable and explained everything clearly. Fair pricing too!</p>
@@ -273,6 +303,7 @@ export default function Home() {
                 <div className="item wow fadeIn">
                   <div className="box border">
                     <div className="img">
+                      {/* Performance Optimization: Lazy load testimonial quote icons */}
                       <Image src="/img/quote.png" alt="" width={60} height={60} className="object-fit-cover" />
                     </div>
                     <p className="text-capitalize">Fast response time and excellent workmanship. They fixed our water heater issue quickly and professionally. Will definitely call again!</p>
@@ -398,7 +429,8 @@ export default function Home() {
                   <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
                   <div className="img">
                     <div className="inner-img">
-                      <Link href="/blog1"><Image src="/img/blog-01.jpg" alt="" width={400} height={300} className="object-fit-cover" />
+                      {/* Performance Optimization: Lazy load blog images with proper sizes */}
+                      <Link href="/blog1"><Image src="/img/blog-01.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
                         <div className="blue-box"></div></Link>
                     </div>
                   </div>
@@ -413,7 +445,7 @@ export default function Home() {
                   <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
                   <div className="img">
                     <div className="inner-img">
-                      <Link href="/blog2"><Image src="/img/blog-02.jpg" alt="" width={400} height={300} className="object-fit-cover" />
+                      <Link href="/blog2"><Image src="/img/blog-02.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
                         <div className="blue-box"></div></Link>
                     </div>
                   </div>
@@ -428,7 +460,7 @@ export default function Home() {
                   <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
                   <div className="img">
                     <div className="inner-img">
-                      <Link href="/blog3"><Image src="/img/blog-03.jpg" alt="" width={400} height={300} className="object-fit-cover" />
+                      <Link href="/blog3"><Image src="/img/blog-03.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
                         <div className="blue-box"></div></Link>
                     </div>
                   </div>
@@ -443,7 +475,7 @@ export default function Home() {
                   <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
                   <div className="img">
                     <div className="inner-img">
-                      <Link href="/blog4"><Image src="/img/blog-04.jpg" alt="" width={400} height={300} className="object-fit-cover" />
+                      <Link href="/blog4"><Image src="/img/blog-04.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
                         <div className="blue-box"></div></Link>
                     </div>
                   </div>
@@ -458,7 +490,7 @@ export default function Home() {
                   <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
                   <div className="img">
                     <div className="inner-img">
-                      <Link href="/blog5"><Image src="/img/blog-05.jpg" alt="" width={400} height={300} className="object-fit-cover" />
+                      <Link href="/blog5"><Image src="/img/blog-05.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
                         <div className="blue-box"></div></Link>
                     </div>
                   </div>
@@ -473,7 +505,7 @@ export default function Home() {
                   <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
                   <div className="img">
                     <div className="inner-img">
-                      <Link href="/blog6"><Image src="/img/blog-06.jpg" alt="" width={400} height={300} className="object-fit-cover" />
+                      <Link href="/blog6"><Image src="/img/blog-06.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
                         <div className="blue-box"></div></Link>
                     </div>
                   </div>
@@ -492,46 +524,7 @@ export default function Home() {
 
       <Footer />
 
-      {/* Load all required scripts */}
-      <Script src="/js/jquery.min.js" strategy="beforeInteractive" />
-      <Script src="/js/owl.carousel.min.js" strategy="lazyOnload" />
-      <Script src="/js/wow.min.js" strategy="lazyOnload" />
-      <Script src="/js/bootstrap.bundle.min.js" strategy="beforeInteractive" />
-      <Script src="/js/swiper.js" strategy="lazyOnload" />
-      <Script src="/js/custom.js" strategy="lazyOnload" />
-      <Script id="owl-carousel-init" strategy="lazyOnload">
-        {`
-          $(document).ready(function() {
-            $('.owl-carousel-1').owlCarousel({
-              items: 1,
-              loop: true,
-              autoplay: true,
-              autoplayTimeout: 5000,
-              nav: false,
-              dots: false
-            });
-            $('.owl-carousel-2').owlCarousel({
-              items: 1,
-              loop: true,
-              autoplay: true,
-              nav: false,
-              dots: true
-            });
-            $('.owl-carousel-3').owlCarousel({
-              items: 3,
-              loop: true,
-              autoplay: true,
-              nav: false,
-              dots: false,
-              responsive: {
-                0: { items: 1 },
-                768: { items: 2 },
-                992: { items: 3 }
-              }
-            });
-          });
-        `}
-      </Script>
+      {/* Owl Carousel initialization - moved to layout.tsx to avoid duplicate script loading */}
     </>
   )
 }

@@ -4,12 +4,14 @@ import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
 import Image from 'next/image'
 import Link from 'next/link'
-import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: 'About Us - Tribeca Plumbing, Inc.',
   description: 'Learn about Tribeca Plumbing, Inc. - Licensed plumbing and HVAC experts serving Dallas/Ft. Worth since 2009',
 }
+
+// Performance Optimization: Enable static generation for faster page loads
+export const dynamic = 'force-static'
 
 export default function About() {
   return (
@@ -36,7 +38,8 @@ export default function About() {
           <div className="row">
             <div className="col-6 wow fadeInLeft">
               <div className="img">
-                <Image src="/img/about.png" alt="" width={600} height={600} />
+                {/* Performance Optimization: Lazy load about image with proper sizes */}
+                <Image src="/img/about.png" alt="" width={600} height={600} sizes="(max-width: 992px) 100vw, 50vw" />
               </div>
             </div>
             <div className="col-6 ps-6 wow fadeInRight">
@@ -132,7 +135,8 @@ export default function About() {
           <div className="row">
             <div className="col-3 wow fadeInLeft">
               <div className="img">
-                <Image src="/img/about-01.png" alt="" width={300} height={400} />
+                {/* Performance Optimization: Lazy load team images with proper sizes */}
+                <Image src="/img/about-01.png" alt="" width={300} height={400} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" />
               </div>
               <div className="text-center">
                 <h4>Licensed Plumber</h4>
@@ -141,7 +145,7 @@ export default function About() {
             </div>
             <div className="col-3 mt-320-2 wow fadeInUp">
               <div className="img">
-                <Image src="/img/about-02.png" alt="" width={300} height={400} />
+                <Image src="/img/about-02.png" alt="" width={300} height={400} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" />
               </div>
               <div className="text-center">
                 <h4>HVAC Technician</h4>
@@ -150,7 +154,7 @@ export default function About() {
             </div>
             <div className="col-3 mt-768-2 wow fadeInDown">
               <div className="img">
-                <Image src="/img/about-03.png" alt="" width={300} height={400} />
+                <Image src="/img/about-03.png" alt="" width={300} height={400} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" />
               </div>
               <div className="text-center">
                 <h4>Electrical Specialist</h4>
@@ -159,7 +163,7 @@ export default function About() {
             </div>
             <div className="col-3 mt-768-2 wow fadeInRight">
               <div className="img">
-                <Image src="/img/about-04.png" alt="" width={300} height={400} />
+                <Image src="/img/about-04.png" alt="" width={300} height={400} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" />
               </div>
               <div className="text-center">
                 <h4>Service Manager</h4>
@@ -171,27 +175,6 @@ export default function About() {
       </section>
 
       <Footer />
-
-      {/* Counter Script */}
-      <Script id="counter-script" strategy="lazyOnload">
-        {`
-          let count = document.querySelectorAll(".count")
-          let arr = Array.from(count)
-          arr.map(function (item) {
-            let startnumber = 0
-            function counterup() {
-              startnumber++
-              item.innerHTML = startnumber
-              if (startnumber == item.dataset.number) {
-                clearInterval(stop)
-              }
-            }
-            let stop = setInterval(function () {
-              counterup()
-            }, 50)
-          })
-        `}
-      </Script>
     </>
   )
 }

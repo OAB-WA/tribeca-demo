@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   description: 'Frequently asked questions about plumbing, HVAC, and electrical services in Dallas, TX',
 }
 
+// Performance Optimization: Enable static generation for faster page loads
+export const dynamic = 'force-static'
+
 export default function FAQ() {
   return (
     <>

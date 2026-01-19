@@ -3,7 +3,6 @@
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import Script from 'next/script'
 import Image from 'next/image'
 
 interface NewsletterForm {
@@ -48,8 +47,9 @@ export default function Footer() {
           {/* Logo Section */}
           <div className="row mb-4">
             <div className="col-12 d-flex justify-content-center">
+              {/* Performance Optimization: Lazy load footer logo (below fold) */}
               <Link href="/" className="footer-logo">
-                <Image src="/img/tribeca-logo.png" alt="Tribeca Plumbing, Inc." width={200} height={60} style={{ maxHeight: '60px', width: 'auto' }} />
+                <Image src="/img/tribeca-logo.png" alt="Tribeca Plumbing, Inc." width={200} height={60} sizes="200px" style={{ maxHeight: '60px', width: 'auto' }} />
               </Link>
             </div>
           </div>
@@ -264,8 +264,6 @@ export default function Footer() {
           </a>
         </div>
       </section>
-
-      <Script src="/js/footer.js" strategy="lazyOnload" />
     </>
   )
 }

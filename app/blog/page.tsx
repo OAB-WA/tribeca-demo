@@ -6,7 +6,6 @@ import Loader from '@/components/Loader'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import Script from 'next/script'
 
 export default function Blog() {
   const router = useRouter()
@@ -71,7 +70,8 @@ export default function Blog() {
                     <div className="img">
                       <div className="inner-img">
                         <Link href={`/blog${post.id}`}>
-                          <Image src={`/img/blog-0${post.id}.jpg`} alt="" width={80} height={80} />
+                          {/* Performance Optimization: Lazy load blog thumbnail images */}
+                        <Image src={`/img/blog-0${post.id}.jpg`} alt="" width={80} height={80} sizes="80px" />
                         </Link>
                       </div>
                     </div>
@@ -98,7 +98,8 @@ export default function Blog() {
                     <Link href="/blog1">
                       <div className="img">
                         <div className="inner-img">
-                          <Image src="/img/blog-01.jpg" alt="" width={400} height={300} className="object-fit-cover" />
+                          {/* Performance Optimization: Lazy load blog images with proper sizes */}
+                          <Image src="/img/blog-01.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, 50vw" className="object-fit-cover" />
                         </div>
                       </div>
                     </Link>
@@ -117,7 +118,7 @@ export default function Blog() {
                     <Link href="/blog2">
                       <div className="img">
                         <div className="inner-img">
-                          <Image src="/img/blog-02.jpg" alt="" width={400} height={300} className="object-fit-cover" />
+                          <Image src="/img/blog-02.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, 50vw" className="object-fit-cover" />
                         </div>
                       </div>
                     </Link>
@@ -140,7 +141,7 @@ export default function Blog() {
                     <Link href="/blog3">
                       <div className="img">
                         <div className="inner-img">
-                          <Image src="/img/blog-03.jpg" alt="" width={400} height={300} className="object-fit-cover" />
+                          <Image src="/img/blog-03.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, 50vw" className="object-fit-cover" />
                         </div>
                       </div>
                     </Link>
@@ -159,7 +160,7 @@ export default function Blog() {
                     <Link href="/blog4">
                       <div className="img">
                         <div className="inner-img">
-                          <Image src="/img/blog-04.jpg" alt="" width={400} height={300} className="object-fit-cover" />
+                          <Image src="/img/blog-04.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, 50vw" className="object-fit-cover" />
                         </div>
                       </div>
                     </Link>
@@ -182,7 +183,7 @@ export default function Blog() {
                     <Link href="/blog5">
                       <div className="img">
                         <div className="inner-img">
-                          <Image src="/img/blog-05.jpg" alt="" width={400} height={300} className="object-fit-cover" />
+                          <Image src="/img/blog-05.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, 50vw" className="object-fit-cover" />
                         </div>
                       </div>
                     </Link>
@@ -201,7 +202,7 @@ export default function Blog() {
                     <Link href="/blog6">
                       <div className="img">
                         <div className="inner-img">
-                          <Image src="/img/blog-06.jpg" alt="" width={400} height={300} className="object-fit-cover" />
+                          <Image src="/img/blog-06.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, 50vw" className="object-fit-cover" />
                         </div>
                       </div>
                     </Link>

@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   description: 'Professional plumbing services in Dallas including residential, commercial, emergency, and sewer services. Call (214) 402-5454',
 }
 
+// Performance Optimization: Enable static generation for faster page loads
+export const dynamic = 'force-static'
+
 export default function Services() {
   return (
     <>
@@ -43,7 +46,8 @@ export default function Services() {
                 <div className="sec">
                   <div className="img">
                     <div className="inner-img">
-                      <Image src="/img/ser-01.jpg" alt="" width={400} height={300} />
+                      {/* Performance Optimization: Lazy load service images with proper sizes */}
+                      <Image src="/img/ser-01.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                   </div>
                   <div className="text-center">
@@ -59,7 +63,7 @@ export default function Services() {
                 <div className="sec">
                   <div className="img">
                     <div className="inner-img">
-                      <Image src="/img/ser-02.jpg" alt="" width={400} height={300} />
+                      <Image src="/img/ser-02.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                   </div>
                   <div className="text-center">
@@ -75,7 +79,7 @@ export default function Services() {
                 <div className="sec">
                   <div className="img">
                     <div className="inner-img">
-                      <Image src="/img/ser-03.jpg" alt="" width={400} height={300} />
+                      <Image src="/img/ser-03.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                   </div>
                   <div className="text-center">
@@ -93,7 +97,7 @@ export default function Services() {
                 <div className="sec">
                   <div className="img">
                     <div className="inner-img">
-                      <Image src="/img/ser-04.jpg" alt="" width={400} height={300} />
+                      <Image src="/img/ser-04.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                   </div>
                   <div className="text-center">
@@ -109,7 +113,7 @@ export default function Services() {
                 <div className="sec">
                   <div className="img">
                     <div className="inner-img">
-                      <Image src="/img/ser-05.jpg" alt="" width={400} height={300} />
+                      <Image src="/img/ser-05.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                   </div>
                   <div className="text-center">
@@ -125,7 +129,7 @@ export default function Services() {
                 <div className="sec">
                   <div className="img">
                     <div className="inner-img">
-                      <Image src="/img/ser-06.jpg" alt="" width={400} height={300} />
+                      <Image src="/img/ser-06.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                   </div>
                   <div className="text-center">

@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import Link from 'next/link'
-import Script from 'next/script'
+import Image from 'next/image'
 
 export default function Header({ currentPage = 'home' }: { currentPage?: string }) {
   useEffect(() => {
@@ -27,13 +27,15 @@ export default function Header({ currentPage = 'home' }: { currentPage?: string 
           <div className="col-6 d-flex justify-content-end">
             <div className="part d-flex pe-4">
               <div className="img pe-2">
-                <img src="/img/clock.svg" alt="" />
+                {/* Performance Optimization: Use next/image for automatic optimization and modern formats */}
+                <Image src="/img/clock.svg" alt="" width={20} height={20} />
               </div>
               <p>Open 24/7</p>
             </div>
             <div className="part d-flex">
               <div className="img pe-2">
-                <img src="/img/location.svg" alt="" />
+                {/* Performance Optimization: Use next/image for automatic optimization and modern formats */}
+                <Image src="/img/location.svg" alt="" width={20} height={20} />
               </div>
               <p>6211 W Northwest Hwy Ste C251, Dallas, TX 75225</p>
             </div>
@@ -51,11 +53,12 @@ export default function Header({ currentPage = 'home' }: { currentPage?: string 
             </button>
 
             <div className="col-3 left-side">
+              {/* Performance Optimization: Use next/image with priority for LCP optimization */}
               <Link href="/" className="logo default-logo">
-                <img src="/img/tribeca-logo.png" alt="Tribeca Plumbing, Inc." />
+                <Image src="/img/tribeca-logo.png" alt="Tribeca Plumbing, Inc." width={200} height={60} priority style={{ maxHeight: '60px', width: 'auto', height: 'auto' }} />
               </Link>
               <Link href="/" className="logo sticky-logo" style={{ display: 'none' }}>
-                <img src="/img/tribeca-logo.png" alt="Tribeca Plumbing, Inc." />
+                <Image src="/img/tribeca-logo.png" alt="Tribeca Plumbing, Inc." width={200} height={60} style={{ maxHeight: '60px', width: 'auto', height: 'auto' }} />
               </Link>
             </div>
 

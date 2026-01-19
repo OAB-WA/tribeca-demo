@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   description: 'Meet our licensed plumbing and HVAC professionals serving Dallas/Ft. Worth',
 }
 
+// Performance Optimization: Enable static generation for faster page loads
+export const dynamic = 'force-static'
+
 export default function Team() {
   return (
     <>

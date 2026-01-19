@@ -45,6 +45,9 @@ const blogPosts: Record<string, { title: string; date: string; image: string; co
   }
 }
 
+// Performance Optimization: Enable static generation for blog posts
+export const dynamic = 'force-static'
+
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params
   const post = blogPosts[id]
@@ -89,14 +92,16 @@ export default async function BlogPost({ params }: { params: Promise<{ id: strin
       <main className="overflow-x-hidden">
         <section className="blog-inner blog-top">
           <div className="blog-img d-flex justify-content-center wow fadeIn">
-            <Image src={post.image} alt={post.title} width={1200} height={600} />
+            {/* Performance Optimization: Priority loading for blog hero image */}
+            <Image src={post.image} alt={post.title} width={1200} height={600} priority sizes="100vw" />
           </div>
           <div className="container pb-0">
             <div className="row">
               <Link href="/uncategorized" className="uncategorized-btn text-decoration-none text-uppercase bg-black text-white">Uncategorized</Link>
               <h3 className="text-capitalize my-4">{post.title}</h3>
               <div className="part d-flex">
-                <Image src="/img/blog-inner.jpg" alt="" width={40} height={40} className="rounded-circle me-2" />
+                    {/* Performance Optimization: Lazy load small avatar image */}
+                    <Image src="/img/blog-inner.jpg" alt="" width={40} height={40} sizes="40px" className="rounded-circle me-2" />
                 <Link href="/" className="text-decoration-none">
                   <p className="m-0 color">By Tribeca Plumbing</p>
                 </Link>
@@ -113,17 +118,18 @@ export default async function BlogPost({ params }: { params: Promise<{ id: strin
               <div className="row">
                 <div className="col-4">
                   <div className="img">
-                    <Image src="/img/ser-01.jpg" alt="" width={300} height={200} />
+                    {/* Performance Optimization: Lazy load blog content images */}
+                    <Image src="/img/ser-01.jpg" alt="" width={300} height={200} sizes="(max-width: 768px) 100vw, 33vw" />
                   </div>
                 </div>
                 <div className="col-4">
                   <div className="img">
-                    <Image src="/img/ser-06.jpg" alt="" width={300} height={200} />
+                    <Image src="/img/ser-06.jpg" alt="" width={300} height={200} sizes="(max-width: 768px) 100vw, 33vw" />
                   </div>
                 </div>
                 <div className="col-4 full mt-576-1-5">
                   <div className="img">
-                    <Image src="/img/ser-02.jpg" alt="" width={300} height={200} />
+                    <Image src="/img/ser-02.jpg" alt="" width={300} height={200} sizes="(max-width: 768px) 100vw, 33vw" />
                   </div>
                 </div>
               </div>
