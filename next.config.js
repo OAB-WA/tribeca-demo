@@ -14,19 +14,13 @@ const nextConfig = {
   },
   // Performance Optimization: Enable compression
   compress: true,
-  // Performance Optimization: Optimize production builds
-  swcMinify: true,
   // Performance Optimization: Enable static page generation
   output: 'standalone',
-  // Performance Optimization: Optimize CSS loading
-  experimental: {
-    optimizeCss: true,
-  },
   // Performance Optimization: Reduce JavaScript bundle size
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  // Performance Optimization: Enable production source maps for better debugging without affecting performance
+  // Performance Optimization: Disable source maps in production for smaller builds
   productionBrowserSourceMaps: false,
 }
 
