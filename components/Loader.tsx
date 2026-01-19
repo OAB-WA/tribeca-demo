@@ -7,28 +7,33 @@ export default function Loader() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Performance Optimization: Reduced loader time from 500ms to 300ms for faster perceived load
-    // Also hide loader immediately when DOM is ready to improve LCP
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 300)
+    // Performance Optimization: Hide loader as soon as DOM is interactive (not waiting for all resources)
+    // This improves LCP and FCP significantly
+    if (typeof window === 'undefined') return
 
-    // Performance Optimization: Hide loader when page is fully loaded
-    if (typeof window !== 'undefined') {
-      if (document.readyState === 'complete') {
-        setIsLoading(false)
-      } else {
-        window.addEventListener('load', () => {
-          setIsLoading(false)
-        })
-      }
+    const hideLoader = () => {
+      setIsLoading(false)
     }
 
+    // Hide immediately if already loaded
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      // Small delay to prevent flash, but much faster than waiting for full load
+      setTimeout(hideLoader, 100)
+      return
+    }
+
+    // Hide when DOM is ready (interactive), not waiting for all resources
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(hideLoader, 100)
+      })
+    }
+
+    // Fallback: hide after max 500ms regardless
+    const maxTimer = setTimeout(hideLoader, 500)
+
     return () => {
-      clearTimeout(timer)
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('load', () => {})
-      }
+      clearTimeout(maxTimer)
     }
   }, [])
 

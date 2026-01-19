@@ -18,6 +18,16 @@ const nextConfig = {
   swcMinify: true,
   // Performance Optimization: Enable static page generation
   output: 'standalone',
+  // Performance Optimization: Optimize CSS loading
+  experimental: {
+    optimizeCss: true,
+  },
+  // Performance Optimization: Reduce JavaScript bundle size
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  // Performance Optimization: Enable production source maps for better debugging without affecting performance
+  productionBrowserSourceMaps: false,
 }
 
 module.exports = nextConfig
