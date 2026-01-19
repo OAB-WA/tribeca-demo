@@ -3,14 +3,83 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 export default function Header({ currentPage = 'home' }: { currentPage?: string }) {
+  const router = useRouter()
+
   useEffect(() => {
-    // Load jQuery and Bootstrap scripts
-    if (typeof window !== 'undefined') {
-      // Header sticky logic will be handled by header.js
+    // Performance Optimization: Header functionality in React (replaces header.js, removes jQuery dependency)
+    if (typeof window === 'undefined') return
+
+    // Sticky header functionality
+    const header = document.querySelector('header')
+    const defaultLogo = document.querySelector('.default-logo')
+    const stickyLogo = document.querySelector('.sticky-logo')
+
+    const handleScroll = () => {
+      if (!header || !defaultLogo || !stickyLogo) return
+      
+      if (window.scrollY > 0) {
+        header.classList.add('sticky')
+        ;(defaultLogo as HTMLElement).style.display = 'none'
+        ;(stickyLogo as HTMLElement).style.display = 'flex'
+      } else {
+        header.classList.remove('sticky')
+        ;(defaultLogo as HTMLElement).style.display = 'flex'
+        ;(stickyLogo as HTMLElement).style.display = 'none'
+      }
     }
-  }, [])
+
+    window.addEventListener('scroll', handleScroll)
+    
+    // Search functionality
+    const searchInput = document.getElementById('searchInput')
+    const searchButton = document.getElementById('searchButton')
+    const searchModal = document.getElementById('staticBackdrop')
+    
+    const handleSearch = () => {
+      const query = (searchInput as HTMLInputElement)?.value
+      if (query) {
+        router.push(`/search?query=${encodeURIComponent(query)}`)
+      }
+    }
+    
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === 'Enter' && e.target === searchInput) {
+        e.preventDefault()
+        handleSearch()
+      }
+    }
+    
+    if (searchInput) {
+      searchInput.addEventListener('keypress', handleKeyPress as any)
+    }
+    
+    if (searchButton) {
+      searchButton.addEventListener('click', (e) => {
+        e.preventDefault()
+        handleSearch()
+      })
+    }
+    
+    // Focus search input when modal opens
+    if (searchModal && (window as any).bootstrap) {
+      searchModal.addEventListener('shown.bs.modal', () => {
+        (searchInput as HTMLInputElement)?.focus()
+      })
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (searchInput) {
+        searchInput.removeEventListener('keypress', handleKeyPress as any)
+      }
+      if (searchButton) {
+        searchButton.removeEventListener('click', handleSearch)
+      }
+    }
+  }, [router])
 
   const getActiveClass = (page: string) => {
     return currentPage === page ? 'color' : ''

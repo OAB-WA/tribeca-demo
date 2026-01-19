@@ -2,8 +2,182 @@
 @import '/css/bootstrap.min.css';
 @import '/css/docs.css';
 @import '/css/all.css';
-@import '/css/owl.carousel.min.css';
-@import '/css/owl.theme.default.min.css';
+/* Performance Optimization: Removed Owl Carousel CSS (replaced with Embla Carousel) */
 @import '/css/animate.css';
 @import '/css/media.css';
 @import '/css/style.css';
+
+/* Performance Optimization: Embla Carousel styles - lightweight (~2KB vs 44KB Owl) */
+.embla {
+  position: relative;
+  width: 100%;
+}
+
+.embla__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y;
+  margin-left: 0;
+}
+
+.embla__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 auto;
+  min-width: 0;
+  padding-left: 0;
+  /* Performance Optimization: Add spacing between slides to prevent overlap */
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+
+.embla__prev,
+.embla__next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: background 0.3s;
+  color: #000;
+}
+
+.embla__prev:hover,
+.embla__next:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.embla__prev {
+  left: 10px;
+}
+
+.embla__next {
+  right: 10px;
+}
+
+.embla__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.embla__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.3s;
+  padding: 0;
+}
+
+.embla__dot--selected {
+  background: var(--main-color--, #B2D235);
+}
+
+.embla__dot:hover {
+  background: #999;
+}
+
+/* Performance Optimization: Fix spacing to prevent text/image overlap in service boxes */
+/* Ensure service boxes maintain proper spacing even when inside carousels */
+.service2 .box {
+  position: relative;
+  overflow: visible;
+}
+
+.service2 .box .sec {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.service2 .box .img {
+  flex-shrink: 0;
+  margin-bottom: 19px !important;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  width: 100%;
+  /* Override media query height: 100% that causes overlap */
+  height: 260px !important;
+  max-height: 260px !important;
+}
+
+.service2 .box .img .inner-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 260px;
+  overflow: hidden;
+}
+
+.service2 .box .text-center {
+  flex: 1;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.service2 .box .text-center h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.service2 .box .text-center p {
+  position: relative;
+  margin-top: 0;
+}
+
+/* Override media query rules that cause image overlap - must come after media.css import */
+@media (max-width: 992px) {
+  .service2 .box .img {
+    height: 260px !important;
+    max-height: 260px !important;
+    margin-bottom: 19px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .service2 .box .img {
+    height: 260px !important;
+    max-height: 260px !important;
+    margin-bottom: 19px !important;
+  }
+}
+
+/* Remove right padding from last slide in each viewport */
+.embla__slide:last-child {
+  padding-right: 0;
+}
+
+/* Single-slide carousels don't need spacing */
+.embla.owl-carousel-1 .embla__slide,
+.embla.owl-carousel-2 .embla__slide {
+  padding-right: 0;
+}
+
+/* Ensure carousel items don't overlap */
+.embla__slide > .item {
+  width: 100%;
+  position: relative;
+}

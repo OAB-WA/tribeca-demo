@@ -21,86 +21,30 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
-        {/* Performance Optimization: Load jQuery and Bootstrap after page becomes interactive to avoid blocking render */}
-        {/* Changed from beforeInteractive to afterInteractive to improve LCP and FCP */}
-        <Script src="/js/jquery.min.js" strategy="afterInteractive" />
+        
+        {/* Performance Optimization: Bootstrap only - jQuery and Owl Carousel removed! (130KB savings) */}
         <Script src="/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
         
-        {/* Performance Optimization: Lazy load non-critical scripts to reduce initial bundle size */}
-        {/* These scripts are loaded after page interaction to improve initial load time */}
-        <Script src="/js/owl.carousel.min.js" strategy="lazyOnload" />
+        {/* Performance Optimization: WOW.js for animations */}
         <Script src="/js/wow.min.js" strategy="lazyOnload" />
-        <Script src="/js/swiper.js" strategy="lazyOnload" />
-        <Script src="/js/loader.js" strategy="lazyOnload" />
-        <Script src="/js/header.js" strategy="lazyOnload" />
-        <Script src="/js/footer.js" strategy="lazyOnload" />
-        <Script src="/js/custom.js" strategy="lazyOnload" />
         
-        {/* Performance Optimization: Initialize Owl Carousel after dependencies load */}
-        {/* This ensures jQuery and Owl Carousel are available before initialization */}
-        <Script id="owl-carousel-init" strategy="lazyOnload">
-          {`
-            // Wait for jQuery and Owl Carousel to be available
-            function initOwlCarousels() {
-              if (typeof window !== 'undefined' && typeof jQuery !== 'undefined' && jQuery.fn.owlCarousel) {
-                jQuery(document).ready(function($) {
-                  $('.owl-carousel-1').owlCarousel({
-                    items: 1,
-                    loop: true,
-                    autoplay: true,
-                    autoplayTimeout: 5000,
-                    nav: false,
-                    dots: false
-                  });
-                  $('.owl-carousel-2').owlCarousel({
-                    items: 1,
-                    loop: true,
-                    autoplay: true,
-                    nav: false,
-                    dots: true
-                  });
-                  $('.owl-carousel-3').owlCarousel({
-                    items: 3,
-                    loop: true,
-                    autoplay: true,
-                    nav: false,
-                    dots: false,
-                    responsive: {
-                      0: { items: 1 },
-                      768: { items: 2 },
-                      992: { items: 3 }
-                    }
-                  });
-                });
-              } else {
-                // Retry if dependencies aren't ready yet
-                setTimeout(initOwlCarousels, 100);
-              }
-            }
-            initOwlCarousels();
-          `}
-        </Script>
-        
-        {/* Performance Optimization: Counter animation script - loaded once globally */}
+        {/* Performance Optimization: Counter animation (vanilla JS - no jQuery) */}
         <Script id="counter-script" strategy="lazyOnload">
           {`
-            // Initialize counter animations when page is ready
             function initCounters() {
               if (typeof window !== 'undefined' && document.readyState === 'complete') {
-                let count = document.querySelectorAll(".count");
-                let arr = Array.from(count);
-                arr.map(function (item) {
+                const countElements = document.querySelectorAll(".count");
+                countElements.forEach(function (item) {
                   let startnumber = 0;
+                  const target = parseInt(item.dataset.number);
                   function counterup() {
                     startnumber++;
                     item.innerHTML = startnumber;
-                    if (startnumber == item.dataset.number) {
-                      clearInterval(stop);
+                    if (startnumber >= target) {
+                      clearInterval(intervalId);
                     }
                   }
-                  let stop = setInterval(function () {
-                    counterup();
-                  }, 50);
+                  const intervalId = setInterval(counterup, 50);
                 });
               } else {
                 setTimeout(initCounters, 100);
@@ -113,6 +57,26 @@ export default function RootLayout({
                 window.addEventListener('load', initCounters);
               }
             }
+          `}
+        </Script>
+        
+        {/* Performance Optimization: WOW.js initialization */}
+        <Script id="wow-init" strategy="lazyOnload">
+          {`
+            function initWOW() {
+              if (typeof window !== 'undefined' && typeof WOW !== 'undefined') {
+                new WOW({
+                  boxClass: 'wow',
+                  animateClass: 'animated',
+                  offset: 0,
+                  mobile: true,
+                  live: true
+                }).init();
+              } else {
+                setTimeout(initWOW, 100);
+              }
+            }
+            initWOW();
           `}
         </Script>
       </body>

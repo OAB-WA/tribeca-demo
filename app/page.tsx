@@ -3,6 +3,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
 import QuoteForm from '@/components/QuoteForm'
+import Carousel from '@/components/Carousel'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -21,71 +22,66 @@ export default function Home() {
       <Loader />
       <Header currentPage="home" />
       
-      {/* Banner Carousel */}
+      {/* Banner Carousel - Performance: Using Embla Carousel (2KB vs 130KB jQuery+Owl) */}
       <section className="banner">
-        <div className="owl-carousel owl-theme owl-carousel-1 owl-loaded owl-drag">
-          <div className="owl-stage-outer">
-            <div className="owl-stage" style={{ transform: 'translate3d(-5850px, 0px, 0px)', transition: '0.25s', width: '11700px' }}>
-              <div className="owl-item cloned" style={{ width: '1920px', marginRight: '30px' }}>
-                <div className="item">
-                  <div className="card border-0 wow fadeIn" style={{ visibility: 'visible' }}>
-                    {/* Performance Optimization: Priority loading for above-fold hero image to improve LCP */}
-                    <Image 
-                      src="/img/slider-01.jpg" 
-                      alt="" 
-                      width={1920} 
-                      height={800} 
-                      priority
-                      sizes="100vw"
-                      className="card-img slider-img rounded-0 object-fit-cover" 
-                    />
-                    <div className="card-img-overlay">
-                      <div className="img-inner wow fadeInUpBig" style={{ visibility: 'visible' }}>
-                        <div className="text">
-                          <h5 className="text-capitalize text-white">Need Help With A Plumbing Emergency?</h5>
-                          <h2 className="text-capitalize text-white">Dallas Plumbing &amp; HVAC <br /> Experts You Can Trust</h2>
-                          <Link href="/contact" className="text-decoration-none d-flex justify-content-center">
-                            <div className="main-btn btn border-0 rounded-0 p-0 d-flex justify-content-center align-items-center">
-                              Call (214) 402-5454
-                            </div>
-                          </Link>
-                        </div>
+        <Carousel 
+          className="owl-carousel-1"
+          options={{ loop: true, autoplay: true, autoplayDelay: 5000 }}
+        >
+          <div className="item">
+            <div className="card border-0 wow fadeIn">
+              {/* Performance Optimization: Priority loading for above-fold hero image to improve LCP */}
+              <Image 
+                src="/img/slider-01.jpg" 
+                alt="" 
+                width={1920} 
+                height={800} 
+                priority
+                sizes="100vw"
+                className="card-img slider-img rounded-0 object-fit-cover" 
+              />
+              <div className="card-img-overlay">
+                <div className="img-inner wow fadeInUpBig">
+                  <div className="text">
+                    <h5 className="text-capitalize text-white">Need Help With A Plumbing Emergency?</h5>
+                    <h2 className="text-capitalize text-white">Dallas Plumbing &amp; HVAC <br /> Experts You Can Trust</h2>
+                    <Link href="/contact" className="text-decoration-none d-flex justify-content-center">
+                      <div className="main-btn btn border-0 rounded-0 p-0 d-flex justify-content-center align-items-center">
+                        Call (214) 402-5454
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="owl-item cloned" style={{ width: '1920px', marginRight: '30px' }}>
-                <div className="item">
-                  <div className="card border-0 wow fadeIn" style={{ visibility: 'visible' }}>
-                    {/* Performance Optimization: Lazy load second slider image (below fold) */}
-                    <Image 
-                      src="/img/slider-02.jpg" 
-                      alt="" 
-                      width={1920} 
-                      height={800} 
-                      sizes="100vw"
-                      className="card-img rounded-0 slider-img object-fit-cover" 
-                    />
-                    <div className="card-img-overlay">
-                      <div className="img-inner wow fadeInUpBig" style={{ visibility: 'visible' }}>
-                        <div className="text">
-                          <h5 className="text-capitalize text-white">24/7 Emergency Service</h5>
-                          <h2 className="text-capitalize text-white">Licensed Professionals <br /> Serving Dallas/Ft. Worth</h2>
-                          <Link href="/contact" className="text-decoration-none d-flex justify-content-center">
-                            <div className="main-btn btn border-0 rounded-0 p-0 d-flex justify-content-center align-items-center">
-                              Get Started Today
-                            </div>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+          <div className="item">
+            <div className="card border-0 wow fadeIn">
+              {/* Performance Optimization: Lazy load second slider image (below fold) */}
+              <Image 
+                src="/img/slider-02.jpg" 
+                alt="" 
+                width={1920} 
+                height={800} 
+                sizes="100vw"
+                className="card-img rounded-0 slider-img object-fit-cover" 
+              />
+              <div className="card-img-overlay">
+                <div className="img-inner wow fadeInUpBig">
+                  <div className="text">
+                    <h5 className="text-capitalize text-white">24/7 Emergency Service</h5>
+                    <h2 className="text-capitalize text-white">Licensed Professionals <br /> Serving Dallas/Ft. Worth</h2>
+                    <Link href="/contact" className="text-decoration-none d-flex justify-content-center">
+                      <div className="main-btn btn border-0 rounded-0 p-0 d-flex justify-content-center align-items-center">
+                        Get Started Today
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Carousel>
       </section>
 
       {/* Service Stats */}
@@ -277,7 +273,12 @@ export default function Home() {
           </div>
           <div className="row">
             <div className="col-12">
-              <div className="owl-carousel owl-theme owl-carousel-2">
+              {/* Performance: Using Embla Carousel for testimonials */}
+              <Carousel 
+                className="owl-carousel-2"
+                options={{ loop: true, autoplay: true }}
+                showDots={true}
+              >
                 <div className="item wow fadeIn">
                   <div className="box border">
                     <div className="img">
@@ -311,7 +312,7 @@ export default function Home() {
                     <p>Irving, TX</p>
                   </div>
                 </div>
-              </div>
+              </Carousel>
             </div>
           </div>
         </div>
@@ -424,7 +425,12 @@ export default function Home() {
           </div>
           <div className="row">
             <div className="col-12">
-              <div className="owl-carousel owl-theme owl-carousel-3">
+              {/* Performance: Using Embla Carousel for blog posts with responsive slides */}
+              <Carousel 
+                className="owl-carousel-3"
+                options={{ loop: true, autoplay: true }}
+                slidesPerView={{ 0: 1, 768: 2, 992: 3 }}
+              >
                 <div className="item border wow fadeIn">
                   <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
                   <div className="img">
@@ -516,15 +522,13 @@ export default function Home() {
                     <p className="mb-0">Professional plumbing solutions for commercial properties in the Dallas area...</p>
                   </div>
                 </div>
-              </div>
+              </Carousel>
             </div>
           </div>
         </div>
       </section>
 
       <Footer />
-
-      {/* Owl Carousel initialization - moved to layout.tsx to avoid duplicate script loading */}
     </>
   )
 }
