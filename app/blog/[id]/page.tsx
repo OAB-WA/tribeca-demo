@@ -45,8 +45,9 @@ const blogPosts: Record<string, { title: string; date: string; image: string; co
   }
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const post = blogPosts[params.id]
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params
+  const post = blogPosts[id]
   if (!post) {
     return {
       title: 'Blog Post Not Found - Tribeca Plumbing, Inc.',
@@ -58,8 +59,9 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   }
 }
 
-export default function BlogPost({ params }: { params: { id: string } }) {
-  const post = blogPosts[params.id]
+export default async function BlogPost({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const post = blogPosts[id]
   
   if (!post) {
     notFound()
@@ -134,10 +136,10 @@ export default function BlogPost({ params }: { params: { id: string } }) {
           <div className="container">
             <div className="row pb-5">
               <div className="col-6">
-                {params.id !== '1' && (
-                  <Link href={`/blog${parseInt(params.id) - 1}`} className="text-decoration-none">
+                {id !== '1' && (
+                  <Link href={`/blog${parseInt(id) - 1}`} className="text-decoration-none">
                     <p className="icon mb-2"><i className="bi bi-arrow-left me-2"></i>Previous</p>
-                    <p className="m-0">{blogPosts[String(parseInt(params.id) - 1)]?.title}</p>
+                    <p className="m-0">{blogPosts[String(parseInt(id) - 1)]?.title}</p>
                   </Link>
                 )}
               </div>

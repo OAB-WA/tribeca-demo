@@ -36,7 +36,6 @@ export default function QuoteForm() {
           <input 
             type="text" 
             id="name" 
-            name="name" 
             placeholder="Enter Name" 
             className={`w-100 ${errors.name ? 'error-border' : ''}`}
             {...register('name', { required: true })}
@@ -50,7 +49,6 @@ export default function QuoteForm() {
           <input 
             type="email" 
             id="email-request" 
-            name="email" 
             placeholder="Enter Email"
             className={`w-100 ${errors.email ? 'error-border' : ''}`}
             {...register('email', { required: true })}
@@ -64,7 +62,6 @@ export default function QuoteForm() {
       <div className="my-4">
         <textarea 
           id="message" 
-          name="message" 
           placeholder="Enter Address" 
           className={`w-100 ${errors.message ? 'error-border' : ''}`}
           {...register('message', { required: true })}
@@ -79,7 +76,6 @@ export default function QuoteForm() {
           <input 
             type="text" 
             id="service" 
-            name="service" 
             placeholder="Service" 
             className={`w-100 ${errors.service ? 'error-border' : ''}`}
             {...register('service', { required: true })}
@@ -93,7 +89,6 @@ export default function QuoteForm() {
           <input 
             type="tel" 
             id="phone" 
-            name="phone" 
             placeholder="Telephone" 
             className={`w-100 ${errors.phone ? 'error-border' : ''}`}
             {...register('phone', { required: true })}
