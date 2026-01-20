@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import './globals.css'
+import { dmSans, fontAwesomeSolid, fontAwesomeBrands, fontAwesomeRegular } from '@/lib/fonts'
 
 export const metadata: Metadata = {
   title: 'Tribeca Plumbing, Inc. - Dallas Plumbing & HVAC Experts',
@@ -18,12 +19,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${dmSans.variable} ${fontAwesomeSolid.variable} ${fontAwesomeBrands.variable} ${fontAwesomeRegular.variable}`}>
       <head>
         {/* Performance Optimization: Preconnect to external resources for faster loading */}
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body>
         {children}

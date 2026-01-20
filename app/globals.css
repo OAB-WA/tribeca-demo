@@ -1,11 +1,12 @@
 /* Import all CSS files in exact order to preserve cascade */
-@import '/css/bootstrap.min.css';
-@import '/css/docs.css';
-@import '/css/all.css';
+/* Using relative paths to root css folder so Next.js can bundle and optimize them */
+@import '../css/bootstrap.min.css';
+@import '../css/docs.css';
+@import '../css/all.css';
 /* Performance Optimization: Removed Owl Carousel CSS (replaced with Embla Carousel) */
-@import '/css/animate.css';
-@import '/css/media.css';
-@import '/css/style.css';
+@import '../css/animate.css';
+@import '../css/media.css';
+@import '../css/style.css';
 
 /* Performance Optimization: Embla Carousel styles - lightweight (~2KB vs 44KB Owl) */
 .embla {

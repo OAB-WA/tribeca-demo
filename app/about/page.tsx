@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
+import PageHeader from '@/components/PageHeader'
+import ParallaxSection from '@/components/ParallaxSection'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -19,18 +21,8 @@ export default function About() {
       <Loader />
       <Header currentPage="about" />
 
-      {/* Top Banner */}
-      <section className="top top-img wow fadeIn" data-wow-duration="1s">
-        <div className="top-text">
-          <div className="text-inner">
-            <h2 className="text-capitalize text-white mt-0">About Us</h2>
-            <div className="d-flex text-white justify-content-center">
-              <Link href="/"><i className="fa-solid fa-house"></i></Link>
-              <p className="mb-0"><span className="mx-1">/</span>About Us</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Top Banner - Optimized with PageHeader component */}
+      <PageHeader title="About Us" />
 
       {/* About Section */}
       <section className="about all-padding">
@@ -77,17 +69,13 @@ export default function About() {
         </div>
       </section>
 
-      {/* Parallax Image */}
-      <div className="img-section fix-img wow fadeIn" style={{ backgroundImage: "url('/img/parr.jpg')" }}>
-        <div className="img-inner">
-          <div className="card-img-overlay d-grid align-items-center justify-content-center text-center">
-            <div className="text text-white">
-              <p>Need Help With A Plumbing Emergency?</p>
-              <h3 className="text-white mb-0">24/7 Emergency Plumbing <br /> Service Available</h3>
-            </div>
-          </div>
+      {/* Parallax Image - Optimized with ParallaxSection component */}
+      <ParallaxSection backgroundImage="/img/parr.jpg">
+        <div className="text text-white">
+          <p>Need Help With A Plumbing Emergency?</p>
+          <h3 className="text-white mb-0">24/7 Emergency Plumbing <br /> Service Available</h3>
         </div>
-      </div>
+      </ParallaxSection>
 
       {/* Service Stats */}
       <section className="service">

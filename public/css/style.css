@@ -2,7 +2,7 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
 /* font */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+/* Performance Optimization: Google Fonts loaded via next/font in layout.tsx */
 
 :root {
     --black-color--: #000;
@@ -22,7 +22,7 @@
     --blog-span-color--: #a0aec0;
     --input-color--: #797b7d;
     --search-span-color--: #323232;
-    --font-body--: "DM Sans", sans-serif;
+    --font-body--: var(--font-dm-sans), "DM Sans", sans-serif;
 }
 
 body {

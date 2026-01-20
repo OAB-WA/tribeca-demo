@@ -2,6 +2,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
+import PageHeader from '@/components/PageHeader'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
@@ -29,18 +30,8 @@ export default function Contact() {
       <Loader />
       <Header currentPage="contact" />
 
-      {/* Top Banner */}
-      <section className="top top-img wow fadeIn" data-wow-duration="1s">
-        <div className="top-text">
-          <div className="text-inner">
-            <h2 className="text-capitalize text-white mt-0">Contact</h2>
-            <div className="d-flex text-white justify-content-center">
-              <Link href="/"><i className="fa-solid fa-house"></i></Link>
-              <p className="mb-0"><span className="mx-1">/</span>Contact</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Top Banner - Optimized with PageHeader component */}
+      <PageHeader title="Contact" />
 
       {/* Contact Page */}
       <section className="contact-page all-margin">

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
+import PageHeader from '@/components/PageHeader'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -19,18 +20,8 @@ export default function Services() {
       <Loader />
       <Header currentPage="services" />
 
-      {/* Top Banner */}
-      <section className="top top-img wow fadeIn" data-wow-duration="1s">
-        <div className="top-text">
-          <div className="text-inner">
-            <h2 className="text-capitalize text-white mt-0">Services</h2>
-            <div className="d-flex text-white justify-content-center">
-              <Link href="/"><i className="fa-solid fa-house"></i></Link>
-              <p className="mb-0"><span className="mx-1">/</span>Services</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Top Banner - Optimized with PageHeader component */}
+      <PageHeader title="Services" />
 
       {/* Services Grid */}
       <section className="service2 all-margin">

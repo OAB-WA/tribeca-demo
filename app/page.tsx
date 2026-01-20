@@ -4,6 +4,7 @@ import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
 import QuoteForm from '@/components/QuoteForm'
 import Carousel from '@/components/Carousel'
+import ParallaxSection from '@/components/ParallaxSection'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -318,17 +319,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Parallax Image */}
-      <div className="img-section fix-img wow fadeIn" style={{ backgroundImage: "url('/img/parr.jpg')" }}>
-        <div className="img-inner">
-          <div className="card-img-overlay d-grid align-items-center justify-content-center text-center">
-            <div className="text text-white wow bounceIn">
-              <p>Need Help With A Plumbing Emergency?</p>
-              <h3 className="text-white mb-0">24/7 Emergency Plumbing <br /> Service Available</h3>
-            </div>
-          </div>
+      {/* Parallax Image - Optimized with next/image */}
+      <ParallaxSection backgroundImage="/img/parr.jpg">
+        <div className="text text-white wow bounceIn">
+          <p>Need Help With A Plumbing Emergency?</p>
+          <h3 className="text-white mb-0">24/7 Emergency Plumbing <br /> Service Available</h3>
         </div>
-      </div>
+      </ParallaxSection>
 
       {/* Request Quote Form */}
       <section className="request">
