@@ -21,15 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${fontAwesomeSolid.variable} ${fontAwesomeBrands.variable} ${fontAwesomeRegular.variable}`}>
       <head>
-        {/* Performance Optimization: Preconnect to external resources for faster loading */}
+        {/* Performance Optimization: Preconnect to CDN for Bootstrap Icons */}
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
         
         {/* Performance Optimization: Preload critical hero image for LCP improvement */}
         <link rel="preload" as="image" href="/img/slider-01.jpg" fetchPriority="high" />
-        
-        {/* Performance Optimization: Preload Font Awesome fonts for faster rendering */}
-        <link rel="preload" as="font" type="font/woff2" href="/webfonts/fa-solid-900.woff2" crossOrigin="anonymous" />
-        <link rel="preload" as="font" type="font/woff2" href="/webfonts/fa-brands-400.woff2" crossOrigin="anonymous" />
         
         {/* Performance Optimization: DNS prefetch for Google Maps (if used) */}
         <link rel="dns-prefetch" href="https://maps.googleapis.com" />

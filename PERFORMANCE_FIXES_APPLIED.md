@@ -192,8 +192,8 @@ These require approval as they may affect styling:
 - [x] Alt text added to images
 - [x] Unused files removed
 - [x] Google Maps lazy loading implemented
-- [ ] Bootstrap Icons font files added (manual step)
-- [ ] Test all pages load correctly
+- [x] Bootstrap Icons font files added (manual step)
+- [x] Test all pages load correctly
 - [ ] Verify icons display correctly after font files added
 - [ ] Run Lighthouse audit to measure improvements
 
