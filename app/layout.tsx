@@ -23,6 +23,16 @@ export default function RootLayout({
       <head>
         {/* Performance Optimization: Preconnect to external resources for faster loading */}
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        
+        {/* Performance Optimization: Preload critical hero image for LCP improvement */}
+        <link rel="preload" as="image" href="/img/slider-01.jpg" fetchPriority="high" />
+        
+        {/* Performance Optimization: Preload Font Awesome fonts for faster rendering */}
+        <link rel="preload" as="font" type="font/woff2" href="/webfonts/fa-solid-900.woff2" crossOrigin="anonymous" />
+        <link rel="preload" as="font" type="font/woff2" href="/webfonts/fa-brands-400.woff2" crossOrigin="anonymous" />
+        
+        {/* Performance Optimization: DNS prefetch for Google Maps (if used) */}
+        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
       </head>
       <body>
         {children}
@@ -33,70 +43,11 @@ export default function RootLayout({
         {/* Performance Optimization: WOW.js for animations */}
         <Script src="/js/wow.min.js" strategy="lazyOnload" />
         
-        {/* Performance Optimization: Counter animation (vanilla JS - no jQuery) - uses Intersection Observer for better performance */}
-        <Script id="counter-script" strategy="lazyOnload">
-          {`
-            function initCounters() {
-              if (typeof window === 'undefined' || typeof IntersectionObserver === 'undefined') {
-                setTimeout(initCounters, 100);
-                return;
-              }
-              
-              const countElements = document.querySelectorAll(".count");
-              if (countElements.length === 0) return;
-              
-              const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                  if (entry.isIntersecting && !entry.target.dataset.animated) {
-                    entry.target.dataset.animated = 'true';
-                    let startnumber = 0;
-                    const target = parseInt(entry.target.dataset.number);
-                    const intervalId = setInterval(function() {
-                      startnumber++;
-                      entry.target.innerHTML = startnumber;
-                      if (startnumber >= target) {
-                        clearInterval(intervalId);
-                      }
-                    }, 50);
-                    observer.unobserve(entry.target);
-                  }
-                });
-              }, { threshold: 0.5, rootMargin: '50px' });
-              
-              countElements.forEach((item) => {
-                observer.observe(item);
-              });
-            }
-            
-            if (typeof window !== 'undefined') {
-              if (document.readyState === 'complete') {
-                initCounters();
-              } else {
-                window.addEventListener('load', initCounters);
-              }
-            }
-          `}
-        </Script>
+        {/* Performance Optimization: Counter animation - extracted to external file for better caching */}
+        <Script src="/js/counter.js" strategy="lazyOnload" />
         
-        {/* Performance Optimization: WOW.js initialization */}
-        <Script id="wow-init" strategy="lazyOnload">
-          {`
-            function initWOW() {
-              if (typeof window !== 'undefined' && typeof WOW !== 'undefined') {
-                new WOW({
-                  boxClass: 'wow',
-                  animateClass: 'animated',
-                  offset: 0,
-                  mobile: true,
-                  live: true
-                }).init();
-              } else {
-                setTimeout(initWOW, 100);
-              }
-            }
-            initWOW();
-          `}
-        </Script>
+        {/* Performance Optimization: WOW.js initialization - extracted to external file for better caching */}
+        <Script src="/js/wow-init.js" strategy="lazyOnload" />
       </body>
     </html>
   )

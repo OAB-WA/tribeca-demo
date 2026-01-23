@@ -3,6 +3,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
 import PageHeader from '@/components/PageHeader'
+import LazyMap from '@/components/LazyMap'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
@@ -144,16 +145,11 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Map */}
+      {/* Map - Performance Optimization: Lazy loaded with Intersection Observer */}
       <section className="map wow fadeIn">
-        <iframe
+        <LazyMap
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3356.1234567890!2d-96.78901234567890!3d32.87654321098765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDUyJzM1LjYiTiA5NsKwNDcjMjAuNCJX!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
-          style={{ height: '500px', border: 0 }} 
-          allowFullScreen 
-          loading="lazy" 
-          referrerPolicy="no-referrer-when-downgrade"
-          className="w-100"
-        ></iframe>
+        />
       </section>
 
       <Footer />

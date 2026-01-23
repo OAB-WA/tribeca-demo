@@ -1,5 +1,6 @@
 /* icon */
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+/* Performance Optimization: Bootstrap Icons loaded locally instead of CDN to eliminate render-blocking external request */
+/* Note: Font files (bootstrap-icons.woff2, bootstrap-icons.woff) need to be placed in /public/css/fonts/ folder */
 
 /* font */
 /* Performance Optimization: Google Fonts loaded via next/font in layout.tsx */

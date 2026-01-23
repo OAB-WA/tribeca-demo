@@ -11,7 +11,7 @@ export default function ParallaxSection({ backgroundImage, children, className =
     <div className={`img-section fix-img wow fadeIn position-relative overflow-hidden ${className}`}>
       <Image 
         src={backgroundImage} 
-        alt="" 
+        alt="Background image" 
         fill 
         sizes="100vw" 
         className="object-fit-cover z-n1" 

@@ -17,20 +17,20 @@ export default function Loader() {
 
     // Hide immediately if already loaded
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      // Small delay to prevent flash, but much faster than waiting for full load
-      setTimeout(hideLoader, 100)
+      // Minimal delay to prevent flash, optimized for LCP
+      setTimeout(hideLoader, 50)
       return
     }
 
     // Hide when DOM is ready (interactive), not waiting for all resources
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(hideLoader, 100)
+        setTimeout(hideLoader, 50)
       })
     }
 
-    // Fallback: hide after max 500ms regardless
-    const maxTimer = setTimeout(hideLoader, 500)
+    // Fallback: hide after max 50ms regardless (reduced from 500ms for better LCP)
+    const maxTimer = setTimeout(hideLoader, 50)
 
     return () => {
       clearTimeout(maxTimer)

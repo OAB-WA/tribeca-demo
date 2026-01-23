@@ -97,14 +97,14 @@ export default function Header({ currentPage = 'home' }: { currentPage?: string 
             <div className="part d-flex pe-4">
               <div className="img pe-2">
                 {/* Performance Optimization: Use next/image for automatic optimization and modern formats */}
-                <Image src="/img/clock.svg" alt="" width={20} height={20} />
+                <Image src="/img/clock.svg" alt="24/7 service availability" width={20} height={20} />
               </div>
               <p>Open 24/7</p>
             </div>
             <div className="part d-flex">
               <div className="img pe-2">
                 {/* Performance Optimization: Use next/image for automatic optimization and modern formats */}
-                <Image src="/img/location.svg" alt="" width={20} height={20} />
+                <Image src="/img/location.svg" alt="Dallas location" width={20} height={20} />
               </div>
               <p>6211 W Northwest Hwy Ste C251, Dallas, TX 75225</p>
             </div>

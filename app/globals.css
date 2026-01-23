@@ -3,6 +3,8 @@
 @import '../css/bootstrap.min.css';
 @import '../css/docs.css';
 @import '../css/all.css';
+/* Performance Optimization: Bootstrap Icons loaded locally (removed CDN dependency) */
+@import '../css/bootstrap-icons.min.css';
 /* Performance Optimization: Removed Owl Carousel CSS (replaced with Embla Carousel) */
 @import '../css/animate.css';
 @import '../css/media.css';

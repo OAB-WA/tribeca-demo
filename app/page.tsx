@@ -34,7 +34,7 @@ export default function Home() {
               {/* Performance Optimization: Priority loading for above-fold hero image to improve LCP */}
               <Image 
                 src="/img/slider-01.jpg" 
-                alt="" 
+                alt="Dallas Plumbing & HVAC Experts - Professional plumbing services" 
                 width={1920} 
                 height={800} 
                 priority
@@ -61,7 +61,7 @@ export default function Home() {
               {/* Performance Optimization: Lazy load second slider image (below fold) */}
               <Image 
                 src="/img/slider-02.jpg" 
-                alt="" 
+                alt="24/7 Emergency Plumbing Service in Dallas/Ft. Worth" 
                 width={1920} 
                 height={800} 
                 sizes="100vw"
@@ -135,7 +135,7 @@ export default function Home() {
                   <div className="img">
                     <div className="inner-img">
                       {/* Performance Optimization: Lazy load service images with proper sizes for responsive loading */}
-                      <Image src="/img/ser-01.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                      <Image src="/img/ser-01.jpg" alt="Residential plumbing services in Dallas" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                   </div>
                   <div className="text-center">
@@ -151,7 +151,7 @@ export default function Home() {
                   <div className="img">
                     <div className="inner-img">
                       {/* Performance Optimization: Lazy load service images with proper sizes for responsive loading */}
-                      <Image src="/img/ser-05.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                      <Image src="/img/ser-05.jpg" alt="HVAC services including AC repair and installation" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                   </div>
                   <div className="text-center">
@@ -167,7 +167,7 @@ export default function Home() {
                   <div className="img">
                     <div className="inner-img">
                       {/* Performance Optimization: Lazy load service images with proper sizes for responsive loading */}
-                      <Image src="/img/ser-04.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                      <Image src="/img/ser-04.jpg" alt="Emergency plumbing services available 24/7" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                     </div>
                   </div>
                   <div className="text-center">
@@ -188,7 +188,7 @@ export default function Home() {
             <div className="col-6 wow fadeInLeft">
               <div className="img">
                 {/* Performance Optimization: Lazy load about image (below fold) */}
-                <Image src="/img/about.png" alt="" width={600} height={600} sizes="(max-width: 992px) 100vw, 50vw" />
+                <Image src="/img/about.png" alt="Tribeca Plumbing team of licensed professionals" width={600} height={600} sizes="(max-width: 992px) 100vw, 50vw" />
               </div>
             </div>
             <div className="col-6 ps-6 fadeInRight">
@@ -232,7 +232,7 @@ export default function Home() {
             <div className="col-3 border-end border-blue">
               <div className="img">
                 {/* Performance Optimization: SVG icons are already optimized, but using next/image for consistency */}
-                <Image src="/img/ser-icon-01.svg" alt="" width={80} height={80} />
+                <Image src="/img/ser-icon-01.svg" alt="Water heater repair and installation icon" width={80} height={80} />
               </div>
               <h4 className="text-white">Water Heaters <br /> &amp; Repair</h4>
               <Link href="/services" className="btn text-decoration-none text-white border-bottom rounded-0 p-0">Read More</Link>
@@ -240,7 +240,7 @@ export default function Home() {
             <div className="col-3 border-end border-blue border-res2">
               <div className="img">
                 {/* Performance Optimization: SVG icons are already optimized */}
-                <Image src="/img/ser-icon-02.svg" alt="" width={80} height={80} />
+                <Image src="/img/ser-icon-02.svg" alt="Drain cleaning and sewer services icon" width={80} height={80} />
               </div>
               <h4 className="text-white">Drain Cleaning <br /> &amp; Sewer</h4>
               <Link href="/services" className="btn text-decoration-none text-white border-bottom rounded-0 p-0">Read More</Link>
@@ -248,7 +248,7 @@ export default function Home() {
             <div className="col-3 border-end border-blue border-res">
               <div className="img">
                 {/* Performance Optimization: SVG icons are already optimized */}
-                <Image src="/img/ser-icon-03.svg" alt="" width={80} height={80} />
+                <Image src="/img/ser-icon-03.svg" alt="AC repair and installation services icon" width={80} height={80} />
               </div>
               <h4 className="text-white">AC Repair <br /> &amp; Installation</h4>
               <Link href="/services" className="btn text-decoration-none text-white border-bottom rounded-0 p-0">Read More</Link>
@@ -256,7 +256,7 @@ export default function Home() {
             <div className="col-3 border-res">
               <div className="img">
                 {/* Performance Optimization: SVG icons are already optimized */}
-                <Image src="/img/ser-icon-04.svg" alt="" width={80} height={80} />
+                <Image src="/img/ser-icon-04.svg" alt="Commercial plumbing services icon" width={80} height={80} />
               </div>
               <h4 className="text-white">Commercial <br /> Plumbing</h4>
               <Link href="/services" className="btn text-decoration-none text-white border-bottom rounded-0 p-0">Read More</Link>
@@ -284,7 +284,7 @@ export default function Home() {
                   <div className="box border">
                     <div className="img">
                       {/* Performance Optimization: Lazy load testimonial quote icons */}
-                      <Image src="/img/quote.png" alt="" width={60} height={60} className="object-fit-cover" />
+                      <Image src="/img/quote.png" alt="Customer testimonial quote icon" width={60} height={60} className="object-fit-cover" />
                     </div>
                     <p className="text-capitalize">Tribeca Plumbing came out same day for our emergency plumbing issue. Professional, honest, and got the job done right. Highly recommend!</p>
                     <h4 className="mt-4 mb-0">Sarah M.</h4>
@@ -295,7 +295,7 @@ export default function Home() {
                   <div className="box border">
                     <div className="img">
                       {/* Performance Optimization: Lazy load testimonial quote icons */}
-                      <Image src="/img/quote.png" alt="" width={60} height={60} className="object-fit-cover" />
+                      <Image src="/img/quote.png" alt="Customer testimonial quote icon" width={60} height={60} className="object-fit-cover" />
                     </div>
                     <p className="text-capitalize">Great service for our HVAC installation. The technicians were knowledgeable and explained everything clearly. Fair pricing too!</p>
                     <h4 className="mt-4 mb-0">Michael R.</h4>
@@ -306,7 +306,7 @@ export default function Home() {
                   <div className="box border">
                     <div className="img">
                       {/* Performance Optimization: Lazy load testimonial quote icons */}
-                      <Image src="/img/quote.png" alt="" width={60} height={60} className="object-fit-cover" />
+                      <Image src="/img/quote.png" alt="Customer testimonial quote icon" width={60} height={60} className="object-fit-cover" />
                     </div>
                     <p className="text-capitalize">Fast response time and excellent workmanship. They fixed our water heater issue quickly and professionally. Will definitely call again!</p>
                     <h4 className="mt-4 mb-0">Jennifer L.</h4>
@@ -433,7 +433,7 @@ export default function Home() {
                   <div className="img">
                     <div className="inner-img">
                       {/* Performance Optimization: Lazy load blog images with proper sizes */}
-                      <Link href="/blog1"><Image src="/img/blog-01.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
+                      <Link href="/blog1"><Image src="/img/blog-01.jpg" alt="How to Prevent Common Plumbing Emergencies" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
                         <div className="blue-box"></div></Link>
                     </div>
                   </div>
@@ -448,7 +448,7 @@ export default function Home() {
                   <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
                   <div className="img">
                     <div className="inner-img">
-                      <Link href="/blog2"><Image src="/img/blog-02.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
+                      <Link href="/blog2"><Image src="/img/blog-02.jpg" alt="Choosing the Right Water Heater for Your Home" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
                         <div className="blue-box"></div></Link>
                     </div>
                   </div>
@@ -463,7 +463,7 @@ export default function Home() {
                   <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
                   <div className="img">
                     <div className="inner-img">
-                      <Link href="/blog3"><Image src="/img/blog-03.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
+                      <Link href="/blog3"><Image src="/img/blog-03.jpg" alt="HVAC Maintenance Tips for Texas Summers" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
                         <div className="blue-box"></div></Link>
                     </div>
                   </div>
@@ -478,7 +478,7 @@ export default function Home() {
                   <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
                   <div className="img">
                     <div className="inner-img">
-                      <Link href="/blog4"><Image src="/img/blog-04.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
+                      <Link href="/blog4"><Image src="/img/blog-04.jpg" alt="Signs You Need Professional Drain Cleaning" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
                         <div className="blue-box"></div></Link>
                     </div>
                   </div>
@@ -493,7 +493,7 @@ export default function Home() {
                   <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
                   <div className="img">
                     <div className="inner-img">
-                      <Link href="/blog5"><Image src="/img/blog-05.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
+                      <Link href="/blog5"><Image src="/img/blog-05.jpg" alt="Emergency Plumbing: What to Do Before Help Arrives" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
                         <div className="blue-box"></div></Link>
                     </div>
                   </div>
@@ -508,7 +508,7 @@ export default function Home() {
                   <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
                   <div className="img">
                     <div className="inner-img">
-                      <Link href="/blog6"><Image src="/img/blog-06.jpg" alt="" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
+                      <Link href="/blog6"><Image src="/img/blog-06.jpg" alt="Commercial Plumbing Services for Dallas Businesses" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
                         <div className="blue-box"></div></Link>
                     </div>
                   </div>
