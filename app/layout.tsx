@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import './globals.css'
-import { dmSans, fontAwesomeSolid, fontAwesomeBrands, fontAwesomeRegular } from '@/lib/fonts'
+import { dmSans } from '@/lib/fonts'
 
 export const metadata: Metadata = {
   title: 'Tribeca Plumbing, Inc. - Dallas Plumbing & HVAC Experts',
@@ -19,11 +19,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${fontAwesomeSolid.variable} ${fontAwesomeBrands.variable} ${fontAwesomeRegular.variable}`}>
+    <html lang="en" className={dmSans.variable}>
       <head>
-        {/* Performance Optimization: Preconnect to CDN for Bootstrap Icons */}
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
-        
+        {/* Bootstrap Icons: load as separate CSS request (avoid @import in main bundle) */}
+        <link rel="preload" as="style" href="/css/bootstrap-icons.min.css" />
+        <link rel="stylesheet" href="/css/bootstrap-icons.min.css" />
+
         {/* Performance Optimization: Preload critical hero image for LCP improvement */}
         <link rel="preload" as="image" href="/img/slider-01.jpg" fetchPriority="high" />
         
@@ -34,16 +35,7 @@ export default function RootLayout({
         {children}
         
         {/* Performance Optimization: Bootstrap only - jQuery and Owl Carousel removed! (130KB savings) */}
-        <Script src="/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
-        
-        {/* Performance Optimization: WOW.js for animations */}
-        <Script src="/js/wow.min.js" strategy="lazyOnload" />
-        
-        {/* Performance Optimization: Counter animation - extracted to external file for better caching */}
-        <Script src="/js/counter.js" strategy="lazyOnload" />
-        
-        {/* Performance Optimization: WOW.js initialization - extracted to external file for better caching */}
-        <Script src="/js/wow-init.js" strategy="lazyOnload" />
+        <Script src="/js/bootstrap.bundle.min.js" strategy="lazyOnload" />
       </body>
     </html>
   )

@@ -4,6 +4,10 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 export default function Loader() {
+  // For Lighthouse/mobile performance: remove loader entirely in production builds.
+  // The loader overlay becomes the LCP element and guarantees a poor score.
+  if (process.env.NODE_ENV === 'production') return null
+
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {

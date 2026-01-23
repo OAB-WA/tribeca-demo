@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
-import PageHeader from '@/components/PageHeader'
 import ParallaxSection from '@/components/ParallaxSection'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -21,8 +20,18 @@ export default function About() {
       <Loader />
       <Header currentPage="about" />
 
-      {/* Top Banner - Optimized with PageHeader component */}
-      <PageHeader title="About Us" />
+      {/* Top Banner */}
+      <section className="top top-img wow fadeIn" data-wow-duration="1s">
+        <div className="top-text">
+          <div className="text-inner">
+            <h2 className="text-capitalize text-white mt-0">About Us</h2>
+            <div className="d-flex text-white justify-content-center">
+              <Link href="/"><i className="fa-solid fa-house"></i></Link>
+              <p className="mb-0"><span className="mx-1">/</span>About Us</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* About Section */}
       <section className="about all-padding">
@@ -69,7 +78,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Parallax Image - Optimized with ParallaxSection component */}
+      {/* Parallax Image - optimized with next/image (lazy by default) */}
       <ParallaxSection backgroundImage="/img/parr.jpg">
         <div className="text text-white">
           <p>Need Help With A Plumbing Emergency?</p>
@@ -88,11 +97,11 @@ export default function About() {
             <div className="col-3 text-center mt-992-2">
               <div id="counter">
                 <div className="item">
-                  <h3 className="count text-white mb-0" data-number="15"></h3>
+                  <h3 className="count text-white mb-0" data-number="15">15</h3>
                   <h6 className="text-white mb-0">Years Experience</h6>
                 </div>
                 <div className="item mt-4">
-                  <h3 className="count text-white mb-0" data-number="1000"></h3>
+                  <h3 className="count text-white mb-0" data-number="1000">1000</h3>
                   <h6 className="text-white mb-0">Happy Customers</h6>
                 </div>
               </div>
@@ -100,11 +109,11 @@ export default function About() {
             <div className="col-3 text-center d-flex justify-content-start mt-992-2">
               <div id="counter2">
                 <div className="item">
-                  <h3 className="count text-white mb-0" data-number="24"></h3>
+                  <h3 className="count text-white mb-0" data-number="24">24</h3>
                   <h6 className="text-white mb-0">Hours Available</h6>
                 </div>
                 <div className="item mt-4">
-                  <h3 className="count text-white mb-0" data-number="50"></h3>
+                  <h3 className="count text-white mb-0" data-number="50">50</h3>
                   <h6 className="text-white mb-0">Service Areas</h6>
                 </div>
               </div>

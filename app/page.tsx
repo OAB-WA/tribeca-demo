@@ -3,7 +3,6 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
 import QuoteForm from '@/components/QuoteForm'
-import Carousel from '@/components/Carousel'
 import ParallaxSection from '@/components/ParallaxSection'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -23,66 +22,34 @@ export default function Home() {
       <Loader />
       <Header currentPage="home" />
       
-      {/* Banner Carousel - Performance: Using Embla Carousel (2KB vs 130KB jQuery+Owl) */}
+      {/* Banner - Performance: static hero (removes carousel JS from critical path) */}
       <section className="banner">
-        <Carousel 
-          className="owl-carousel-1"
-          options={{ loop: true, autoplay: true, autoplayDelay: 5000 }}
-        >
-          <div className="item">
-            <div className="card border-0 wow fadeIn">
-              {/* Performance Optimization: Priority loading for above-fold hero image to improve LCP */}
-              <Image 
-                src="/img/slider-01.jpg" 
-                alt="Dallas Plumbing & HVAC Experts - Professional plumbing services" 
-                width={1920} 
-                height={800} 
-                priority
-                sizes="100vw"
-                className="card-img slider-img rounded-0 object-fit-cover" 
-              />
-              <div className="card-img-overlay">
-                <div className="img-inner wow fadeInUpBig">
-                  <div className="text">
-                    <h5 className="text-capitalize text-white">Need Help With A Plumbing Emergency?</h5>
-                    <h2 className="text-capitalize text-white">Dallas Plumbing &amp; HVAC <br /> Experts You Can Trust</h2>
-                    <Link href="/contact" className="text-decoration-none d-flex justify-content-center">
-                      <div className="main-btn btn border-0 rounded-0 p-0 d-flex justify-content-center align-items-center">
-                        Call (214) 402-5454
-                      </div>
-                    </Link>
-                  </div>
+        <div className="item">
+          <div className="card border-0 wow fadeIn">
+            <Image
+              src="/img/slider-01.jpg"
+              alt="Dallas Plumbing & HVAC Experts - Professional plumbing services"
+              width={1920}
+              height={800}
+              priority
+              sizes="100vw"
+              className="card-img slider-img rounded-0 object-fit-cover"
+            />
+            <div className="card-img-overlay">
+              <div className="img-inner wow fadeInUpBig">
+                <div className="text">
+                  <h5 className="text-capitalize text-white">Need Help With A Plumbing Emergency?</h5>
+                  <h2 className="text-capitalize text-white">Dallas Plumbing &amp; HVAC <br /> Experts You Can Trust</h2>
+                  <Link href="/contact" className="text-decoration-none d-flex justify-content-center">
+                    <div className="main-btn btn border-0 rounded-0 p-0 d-flex justify-content-center align-items-center">
+                      Call (214) 402-5454
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
-          <div className="item">
-            <div className="card border-0 wow fadeIn">
-              {/* Performance Optimization: Lazy load second slider image (below fold) */}
-              <Image 
-                src="/img/slider-02.jpg" 
-                alt="24/7 Emergency Plumbing Service in Dallas/Ft. Worth" 
-                width={1920} 
-                height={800} 
-                sizes="100vw"
-                className="card-img rounded-0 slider-img object-fit-cover" 
-              />
-              <div className="card-img-overlay">
-                <div className="img-inner wow fadeInUpBig">
-                  <div className="text">
-                    <h5 className="text-capitalize text-white">24/7 Emergency Service</h5>
-                    <h2 className="text-capitalize text-white">Licensed Professionals <br /> Serving Dallas/Ft. Worth</h2>
-                    <Link href="/contact" className="text-decoration-none d-flex justify-content-center">
-                      <div className="main-btn btn border-0 rounded-0 p-0 d-flex justify-content-center align-items-center">
-                        Get Started Today
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Carousel>
+        </div>
       </section>
 
       {/* Service Stats */}
@@ -96,11 +63,11 @@ export default function Home() {
             <div className="col-3 text-center mt-992-2">
               <div id="counter">
                 <div className="item">
-                  <h3 className="count text-white mb-0" data-number="15"></h3>
+                  <h3 className="count text-white mb-0" data-number="15">15</h3>
                   <h6 className="text-white mb-0">Years Experience</h6>
                 </div>
                 <div className="item mt-4">
-                  <h3 className="count text-white mb-0" data-number="1000"></h3>
+                  <h3 className="count text-white mb-0" data-number="1000">1000</h3>
                   <h6 className="text-white mb-0">Happy Customers</h6>
                 </div>
               </div>
@@ -108,11 +75,11 @@ export default function Home() {
             <div className="col-3 text-center d-flex justify-content-start mt-992-2">
               <div id="counter2">
                 <div className="item">
-                  <h3 className="count text-white mb-0" data-number="24"></h3>
+                  <h3 className="count text-white mb-0" data-number="24">24</h3>
                   <h6 className="text-white mb-0">Hours Available</h6>
                 </div>
                 <div className="item mt-4">
-                  <h3 className="count text-white mb-0" data-number="50"></h3>
+                  <h3 className="count text-white mb-0" data-number="50">50</h3>
                   <h6 className="text-white mb-0">Service Areas</h6>
                 </div>
               </div>
@@ -272,54 +239,43 @@ export default function Home() {
             <p className="color">Client Reviews</p>
             <h3>What Our Customers Say</h3>
           </div>
+          {/* Performance: static testimonials (removes carousel JS) */}
           <div className="row">
-            <div className="col-12">
-              {/* Performance: Using Embla Carousel for testimonials */}
-              <Carousel 
-                className="owl-carousel-2"
-                options={{ loop: true, autoplay: true }}
-                showDots={true}
-              >
-                <div className="item wow fadeIn">
-                  <div className="box border">
-                    <div className="img">
-                      {/* Performance Optimization: Lazy load testimonial quote icons */}
-                      <Image src="/img/quote.png" alt="Customer testimonial quote icon" width={60} height={60} className="object-fit-cover" />
-                    </div>
-                    <p className="text-capitalize">Tribeca Plumbing came out same day for our emergency plumbing issue. Professional, honest, and got the job done right. Highly recommend!</p>
-                    <h4 className="mt-4 mb-0">Sarah M.</h4>
-                    <p>Dallas, TX</p>
-                  </div>
+            <div className="col-4 wow fadeInLeft">
+              <div className="box border">
+                <div className="img">
+                  <Image src="/img/quote.png" alt="Customer testimonial quote icon" width={60} height={60} className="object-fit-cover" />
                 </div>
-                <div className="item wow fadeIn">
-                  <div className="box border">
-                    <div className="img">
-                      {/* Performance Optimization: Lazy load testimonial quote icons */}
-                      <Image src="/img/quote.png" alt="Customer testimonial quote icon" width={60} height={60} className="object-fit-cover" />
-                    </div>
-                    <p className="text-capitalize">Great service for our HVAC installation. The technicians were knowledgeable and explained everything clearly. Fair pricing too!</p>
-                    <h4 className="mt-4 mb-0">Michael R.</h4>
-                    <p>Plano, TX</p>
-                  </div>
+                <p className="text-capitalize">Tribeca Plumbing came out same day for our emergency plumbing issue. Professional, honest, and got the job done right. Highly recommend!</p>
+                <h4 className="mt-4 mb-0">Sarah M.</h4>
+                <p>Dallas, TX</p>
+              </div>
+            </div>
+            <div className="col-4 mt-768-2 wow fadeInUp">
+              <div className="box border">
+                <div className="img">
+                  <Image src="/img/quote.png" alt="Customer testimonial quote icon" width={60} height={60} className="object-fit-cover" />
                 </div>
-                <div className="item wow fadeIn">
-                  <div className="box border">
-                    <div className="img">
-                      {/* Performance Optimization: Lazy load testimonial quote icons */}
-                      <Image src="/img/quote.png" alt="Customer testimonial quote icon" width={60} height={60} className="object-fit-cover" />
-                    </div>
-                    <p className="text-capitalize">Fast response time and excellent workmanship. They fixed our water heater issue quickly and professionally. Will definitely call again!</p>
-                    <h4 className="mt-4 mb-0">Jennifer L.</h4>
-                    <p>Irving, TX</p>
-                  </div>
+                <p className="text-capitalize">Great service for our HVAC installation. The technicians were knowledgeable and explained everything clearly. Fair pricing too!</p>
+                <h4 className="mt-4 mb-0">Michael R.</h4>
+                <p>Plano, TX</p>
+              </div>
+            </div>
+            <div className="col-4 mt-992-2 wow fadeInRight">
+              <div className="box border">
+                <div className="img">
+                  <Image src="/img/quote.png" alt="Customer testimonial quote icon" width={60} height={60} className="object-fit-cover" />
                 </div>
-              </Carousel>
+                <p className="text-capitalize">Fast response time and excellent workmanship. They fixed our water heater issue quickly and professionally. Will definitely call again!</p>
+                <h4 className="mt-4 mb-0">Jennifer L.</h4>
+                <p>Irving, TX</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Parallax Image - Optimized with next/image */}
+      {/* Parallax Image - optimized with next/image (lazy by default) */}
       <ParallaxSection backgroundImage="/img/parr.jpg">
         <div className="text text-white wow bounceIn">
           <p>Need Help With A Plumbing Emergency?</p>
@@ -420,106 +376,64 @@ export default function Home() {
             <p className="color">Our Blog</p>
             <h3>Latest Plumbing &amp; HVAC Tips</h3>
           </div>
+          {/* Performance: static blog cards (removes carousel JS) */}
           <div className="row">
-            <div className="col-12">
-              {/* Performance: Using Embla Carousel for blog posts with responsive slides */}
-              <Carousel 
-                className="owl-carousel-3"
-                options={{ loop: true, autoplay: true }}
-                slidesPerView={{ 0: 1, 768: 2, 992: 3 }}
-              >
-                <div className="item border wow fadeIn">
-                  <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
-                  <div className="img">
-                    <div className="inner-img">
-                      {/* Performance Optimization: Lazy load blog images with proper sizes */}
-                      <Link href="/blog1"><Image src="/img/blog-01.jpg" alt="How to Prevent Common Plumbing Emergencies" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
-                        <div className="blue-box"></div></Link>
-                    </div>
-                  </div>
-                  <div className="blog-info bg-white">
-                    <Link href="/blog1" className="text-decoration-none">
-                      <h4>How to Prevent Common Plumbing Emergencies</h4>
+            <div className="col-4 wow fadeInLeft">
+              <div className="item border">
+                <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
+                <div className="img">
+                  <div className="inner-img">
+                    <Link href="/blog1">
+                      <Image src="/img/blog-01.jpg" alt="How to Prevent Common Plumbing Emergencies" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
+                      <div className="blue-box"></div>
                     </Link>
-                    <p className="mb-0">Learn how to prevent costly plumbing emergencies in your Dallas home...</p>
                   </div>
                 </div>
-                <div className="item border wow fadeIn">
-                  <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
-                  <div className="img">
-                    <div className="inner-img">
-                      <Link href="/blog2"><Image src="/img/blog-02.jpg" alt="Choosing the Right Water Heater for Your Home" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
-                        <div className="blue-box"></div></Link>
-                    </div>
-                  </div>
-                  <div className="blog-info bg-white">
-                    <Link href="/blog2" className="text-decoration-none">
-                      <h4>Choosing the Right Water Heater for Your Home</h4>
+                <div className="blog-info bg-white">
+                  <Link href="/blog1" className="text-decoration-none">
+                    <h4>How to Prevent Common Plumbing Emergencies</h4>
+                  </Link>
+                  <p className="mb-0">Learn how to prevent costly plumbing emergencies in your Dallas home...</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-4 mt-768-2 wow fadeInUp">
+              <div className="item border">
+                <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
+                <div className="img">
+                  <div className="inner-img">
+                    <Link href="/blog2">
+                      <Image src="/img/blog-02.jpg" alt="Choosing the Right Water Heater for Your Home" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
+                      <div className="blue-box"></div>
                     </Link>
-                    <p className="mb-0">Tankless vs traditional water heaters - which is right for your Dallas home...</p>
                   </div>
                 </div>
-                <div className="item border wow fadeIn">
-                  <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
-                  <div className="img">
-                    <div className="inner-img">
-                      <Link href="/blog3"><Image src="/img/blog-03.jpg" alt="HVAC Maintenance Tips for Texas Summers" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
-                        <div className="blue-box"></div></Link>
-                    </div>
-                  </div>
-                  <div className="blog-info bg-white">
-                    <Link href="/blog3" className="text-decoration-none">
-                      <h4>HVAC Maintenance Tips for Texas Summers</h4>
+                <div className="blog-info bg-white">
+                  <Link href="/blog2" className="text-decoration-none">
+                    <h4>Choosing the Right Water Heater for Your Home</h4>
+                  </Link>
+                  <p className="mb-0">Tankless vs traditional water heaters - which is right for your Dallas home...</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-4 mt-992-2 wow fadeInRight">
+              <div className="item border">
+                <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
+                <div className="img">
+                  <div className="inner-img">
+                    <Link href="/blog3">
+                      <Image src="/img/blog-03.jpg" alt="HVAC Maintenance Tips for Texas Summers" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
+                      <div className="blue-box"></div>
                     </Link>
-                    <p className="mb-0">Keep your AC running efficiently during hot Dallas summers with these tips...</p>
                   </div>
                 </div>
-                <div className="item border wow fadeIn">
-                  <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
-                  <div className="img">
-                    <div className="inner-img">
-                      <Link href="/blog4"><Image src="/img/blog-04.jpg" alt="Signs You Need Professional Drain Cleaning" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
-                        <div className="blue-box"></div></Link>
-                    </div>
-                  </div>
-                  <div className="blog-info bg-white">
-                    <Link href="/blog4" className="text-decoration-none">
-                      <h4>Signs You Need Professional Drain Cleaning</h4>
-                    </Link>
-                    <p className="mb-0">Know when to call a professional plumber for drain cleaning services...</p>
-                  </div>
+                <div className="blog-info bg-white">
+                  <Link href="/blog3" className="text-decoration-none">
+                    <h4>HVAC Maintenance Tips for Texas Summers</h4>
+                  </Link>
+                  <p className="mb-0">Keep your AC running efficiently during hot Dallas summers with these tips...</p>
                 </div>
-                <div className="item border wow fadeIn">
-                  <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
-                  <div className="img">
-                    <div className="inner-img">
-                      <Link href="/blog5"><Image src="/img/blog-05.jpg" alt="Emergency Plumbing: What to Do Before Help Arrives" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
-                        <div className="blue-box"></div></Link>
-                    </div>
-                  </div>
-                  <div className="blog-info bg-white">
-                    <Link href="/blog5" className="text-decoration-none">
-                      <h4>Emergency Plumbing: What to Do Before Help Arrives</h4>
-                    </Link>
-                    <p className="mb-0">Important steps to take during a plumbing emergency before our team arrives...</p>
-                  </div>
-                </div>
-                <div className="item border wow fadeIn">
-                  <button className="btn border-0 rounded-0 bg-main text-white">08 oct, 2024</button>
-                  <div className="img">
-                    <div className="inner-img">
-                      <Link href="/blog6"><Image src="/img/blog-06.jpg" alt="Commercial Plumbing Services for Dallas Businesses" width={400} height={300} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-fit-cover" />
-                        <div className="blue-box"></div></Link>
-                    </div>
-                  </div>
-                  <div className="blog-info bg-white">
-                    <Link href="/blog6" className="text-decoration-none">
-                      <h4>Commercial Plumbing Services for Dallas Businesses</h4>
-                    </Link>
-                    <p className="mb-0">Professional plumbing solutions for commercial properties in the Dallas area...</p>
-                  </div>
-                </div>
-              </Carousel>
+              </div>
             </div>
           </div>
         </div>

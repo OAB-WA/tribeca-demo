@@ -3,7 +3,6 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
-import PageHeader from '@/components/PageHeader'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -34,8 +33,18 @@ export default function Blog() {
       <Loader />
       <Header currentPage="blog" />
 
-      {/* Top Banner - Optimized with PageHeader component */}
-      <PageHeader title="Blog" />
+      {/* Top Banner */}
+      <section className="blog-page top top-bg wow fadeIn" data-wow-duration="1s">
+        <div className="top-text">
+          <div className="text-inner">
+            <h2 className="text-capitalize text-white mt-0">Blog</h2>
+            <div className="d-flex text-white justify-content-center">
+              <Link href="/"><i className="fa-solid fa-house"></i></Link>
+              <p className="mb-0"><span className="mx-1">/</span>Blog</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Blog Page */}
       <div className="blog-page all-margin wow fadeIn">

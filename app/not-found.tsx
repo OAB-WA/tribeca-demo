@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
-import PageHeader from '@/components/PageHeader'
 import Image from 'next/image'
 
 export default function NotFound() {
@@ -11,8 +10,18 @@ export default function NotFound() {
       <Loader />
       <Header currentPage="error" />
 
-      {/* Top Banner - Optimized with PageHeader component */}
-      <PageHeader title="404 Error" />
+      {/* Top Banner */}
+      <section className="top top-img wow fadeIn" data-wow-duration="1s">
+        <div className="top-text">
+          <div className="text-inner">
+            <h2 className="text-capitalize text-white mt-0">404 error</h2>
+            <div className="d-flex text-white justify-content-center">
+              <Link href="/"><i className="fa-solid fa-house"></i></Link>
+              <p className="mb-0"><span className="mx-1">/</span>404 error</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Error Page */}
       <section className="error-page wow fadeIn all-margin" data-wow-duration="1s">

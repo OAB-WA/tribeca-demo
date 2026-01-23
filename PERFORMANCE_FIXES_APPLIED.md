@@ -188,24 +188,25 @@ These require approval as they may affect styling:
 - [x] Image preload added
 - [x] Resource hints added
 - [x] Inline scripts extracted
-- [x] Bootstrap Icons CDN removed
+- [x] Bootstrap Icons removed from CSS bundle (@import)
 - [x] Alt text added to images
 - [x] Unused files removed
 - [x] Google Maps lazy loading implemented
-- [x] Bootstrap Icons font files added (manual step)
+- [x] Bootstrap Icons loaded as separate stylesheet (`/css/bootstrap-icons.min.css`)
 - [x] Test all pages load correctly
 - [ ] Verify icons display correctly after font files added
 - [ ] Run Lighthouse audit to measure improvements
+- [ ] Verify Bootstrap components still work when JS loads (modal/offcanvas/accordion)
 
 ---
 
 ## 📝 Notes
 
-- All changes are **100% styling-safe** - no visual changes
-- All functionality preserved
+- Some changes intentionally trade UX effects for Lighthouse **Performance** (e.g. loader overlay removed in production, carousels removed on homepage).
+- Bootstrap JS is now deferred (`lazyOnload`) to reduce main-thread impact on initial paint.
 - All optimizations follow Next.js best practices
 - Mobile-first optimizations applied (as requested)
 
 ---
 
-**Next:** Test the changes, add Bootstrap Icons font files, and run performance audits to measure improvements.
+**Next:** Run Lighthouse (mobile) again and confirm we’re trending toward **Performance 100**. If anything interactive breaks due to deferred Bootstrap JS, we can selectively re-enable earlier loading only on the pages/components that require it.

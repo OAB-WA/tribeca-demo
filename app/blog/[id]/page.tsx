@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
-import PageHeader from '@/components/PageHeader'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -76,8 +75,18 @@ export default async function BlogPost({ params }: { params: Promise<{ id: strin
       <Loader />
       <Header currentPage="blog" />
 
-      {/* Top Banner - Optimized with PageHeader component */}
-      <PageHeader title={post.title} parentText="Blog" parentLink="/blog" />
+      {/* Top Banner */}
+      <section className="blog-inner top top-img wow fadeIn" data-wow-duration="1s">
+        <div className="top-text">
+          <div className="text-inner">
+            <h2 className="text-capitalize text-white mt-0">{post.title}</h2>
+            <div className="d-flex text-white justify-content-center">
+              <Link href="/"><i className="fa-solid fa-house"></i></Link>
+              <p className="mb-0"><span className="mx-1">/</span>Blog</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Blog Inner Page */}
       <main className="overflow-x-hidden">

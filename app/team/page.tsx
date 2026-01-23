@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
-import PageHeader from '@/components/PageHeader'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -20,8 +19,18 @@ export default function Team() {
       <Loader />
       <Header currentPage="team" />
 
-      {/* Top Banner - Optimized with PageHeader component */}
-      <PageHeader title="Our Team" />
+      {/* Top Banner */}
+      <section className="top top-img wow fadeIn" data-wow-duration="1s">
+        <div className="top-text">
+          <div className="text-inner">
+            <h2 className="text-capitalize text-white mt-0">Our Team</h2>
+            <div className="d-flex text-white justify-content-center">
+              <Link href="/"><i className="fa-solid fa-house"></i></Link>
+              <p className="mb-0"><span className="mx-1">/</span>Our Team</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Team Page */}
       <section className="team-page all-margin">
